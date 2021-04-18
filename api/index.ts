@@ -1,3 +1,6 @@
-const sum = (a: number, b: number) => a + b;
+import { VercelRequest, VercelResponse } from "@vercel/node";
 
-console.log(sum(5, 6));
+export default (request: VercelRequest, response: VercelResponse) => {
+  const { name = "World" } = request.query;
+  response.status(200).send(`Hello ${name}!`);
+};
